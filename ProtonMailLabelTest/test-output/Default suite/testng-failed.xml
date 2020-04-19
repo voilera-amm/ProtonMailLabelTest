@@ -3,20 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.ExecuteTest">
+      <class name="testCases.ModifyLabel">
         <methods>
-          <include name="CancelAddNewLabel"/>
-          <include name="browserlaunch"/>
-          <include name="tearDown"/>
-          <include name="DeleteLabel"/>
-          <include name="screenshot"/>
-          <include name="AddNewLabel"/>
-          <include name="AssignLabelToEmail"/>
-          <include name="ModifyLabel"/>
-          <include name="setUpReport"/>
           <include name="closeBrowser"/>
+          <include name="ModifyLabel"/>
+          <include name="browserlaunch"/>
         </methods>
-      </class> <!-- testCases.ExecuteTest -->
+      </class> <!-- testCases.ModifyLabel -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
