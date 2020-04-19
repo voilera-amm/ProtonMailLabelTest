@@ -75,6 +75,7 @@ All this test can be run through different browser via a parameter add in the te
 ## Reporting
 
 Two reports available after running the test, one with testNG ( ProtonMailLabelTest/test-output/index.html) and one with extent Reports  (ProtonMailLabelTest/extentReports.html#!).
+Some ScreenShot can also be lookk in theScreenShot folder
 
 
 ## Status
