@@ -34,11 +34,11 @@ Util: Under this, we write the codes on screenshot and ExtendReport section.
 
 ## TestCases
 
-Test1 : this is a test to create a new label (AddNewLabel)
-Test2 : this is a test to begin to create a new label but finally press cancel (CancelAddNewLabel)
-Test3 : this is a test to modify the label name  (ModifyLabelName)
-Test4 : this is a test to delete a label name (DeleteLabel)
-Test5 : this is a test to assign a label to an email and remove it (AssignLabelToEmail)
+  * Test1 : this is a test to create a new label (AddNewLabel)
+  * Test2 : this is a test to begin to create a new label but finally press cancel (CancelAddNewLabel)
+  * Test3 : this is a test to modify the label name  (ModifyLabelName)
+  * Test4 : this is a test to delete a label name (DeleteLabel)
+  * Test5 : this is a test to assign a label to an email and remove it (AssignLabelToEmail)
 
 
 ## MultiplesBrowser 
