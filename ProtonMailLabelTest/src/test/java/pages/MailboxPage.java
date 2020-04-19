@@ -39,22 +39,22 @@ public class MailboxPage {
 	
 	public void selectSecondEmail (){
 		driver.findElement(IDSecondEmail).click();
+	}
 	
-	}
 	public void selectLabeltoAssign () {
-		driver.findElement (IDCheckFirstlabel).click();
-		
+		driver.findElement (IDCheckFirstlabel).click();	
 	}
+	
 	public void applyButton () {
-		driver.findElement (IDApply).click();
-		
+		driver.findElement (IDApply).click();	
 	}
+	
 	public void logoutProtonMail2 () throws Exception {
 		driver.findElement(IDselectArrowUser).click();
 		Thread.sleep(3000);
 		driver.findElement(IDLogout).click();
-		
 	}
+	
 }
 		
 	

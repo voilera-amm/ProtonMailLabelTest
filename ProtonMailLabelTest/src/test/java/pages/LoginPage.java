@@ -23,17 +23,19 @@ public class LoginPage {
 	      this.enterPasssword(Password);
 	      this.clickSubmit();
 	}
+	
 	public void enterUsername(String Username){
 	      driver.findElement(IDusername).sendKeys(Username);
 	}
-	public void enterPasssword(String Password)
-	{
+	
+	public void enterPasssword(String Password){
 	     driver.findElement(IDpassword).sendKeys(Password);
 	}
-	public void clickSubmit()
-	{
+	
+	public void clickSubmit(){
 	     driver.findElement(IDSubmit).click();
 	}
+	
 }
 	
 

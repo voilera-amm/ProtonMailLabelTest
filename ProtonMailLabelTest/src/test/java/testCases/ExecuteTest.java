@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -42,7 +44,7 @@ import pages.AddNewLabelPage;
 
 public class ExecuteTest {
 
-	// variable declare, value in config.properties file
+	// variable  value in config.properties file
 	public static String url = null;
 	public static String username = null;
 	public static String password = null;
@@ -51,13 +53,11 @@ public class ExecuteTest {
 	WebDriver driver;
 	ExtentHtmlReporter htmlReporter;
 	ExtentReports extent;
-	
-	 // Pages: Under this, classes are created for each page in the web application
-	 LoginPage loginpage;
-	 HomePage  homepage;
-	 LabelPage labelpage;
-	 AddNewLabelPage addNewlabel;
-	 MailboxPage mailboxpage;
+    LoginPage loginpage;
+	HomePage  homepage;
+	LabelPage labelpage;
+	AddNewLabelPage addNewlabel;
+	MailboxPage mailboxpage;
 	
 	 
 	 
@@ -77,9 +77,7 @@ public class ExecuteTest {
 	 @Parameters ("browser")
      public void browserlaunch(String browser) throws Exception {
   		
-		  System.out.println("Browser name is :"+browser);
-  		 
-		  // Getting value for  url, username and password
+  		  // Getting value for  url, username and password
     	  PropertiesFile.getProperties();
     	  
     	  // configuration  Browser Setting and go to protonMailBetasite 
@@ -94,9 +92,14 @@ public class ExecuteTest {
        	  loginpage = new LoginPage(driver);
           homepage = new HomePage(driver);  
           
-          // Login in ProtonMail side and going under the page label
+          // Login on ProtonMail site and going under the page label
           loginpage.loginToSite(username, password);
+          
+          // adding a timeout for slow browser
+    	  driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+          
           homepage.homepageSelectLabel();
+          
           Thread.sleep(3000);
       }
 	 
@@ -114,19 +117,19 @@ public class ExecuteTest {
     	 
     	 labelpage.ClickAddLabelButton();
     	 
-    	 Thread.sleep(3000);
+    	 driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
     	 
     	 addNewlabel.AddLabelName(NewLabelName);
     	 addNewlabel.selectColorLabel();
     	 addNewlabel.clickSubmit();
     	 System.out.println("Add AddNewLabel :"+ NewLabelName);
+    	 driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
     	 
     	// log with snapshot
          test1.pass("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
-         
-    	 
-    	 
      }
+     
+     
      @Test(priority=2)
      public void CancelAddNewLabel () throws Exception {
     	 
@@ -149,6 +152,7 @@ public class ExecuteTest {
          test2.pass("Test2 : begin to create a new label but finnally press cancel was Successfull");
      }
      
+     
      @Test(priority=3)
      public void ModifyLabel () throws Exception {
     	// creates a toggle for the given test, adds all log events under it    
@@ -160,19 +164,20 @@ public class ExecuteTest {
     	 labelpage = new LabelPage (driver);
     	 addNewlabel = new AddNewLabelPage (driver);
     	 
+    	 String ChangeLabelName = ("label01"+driver);
+    	 
     	 labelpage.editLabelLigne3(); 
     	 Thread.sleep(3000);
     	 
-    	 addNewlabel.AddLabelName("Label0");
+    	 addNewlabel.ChangeLabelName(ChangeLabelName);
     	 addNewlabel.selectColorLabel();
     	 addNewlabel.clickSubmit();
-    	 System.out.println("Modify Name ");
+    	 System.out.println("Label Name modify");
+    	 
     	 driver.manage().timeouts().implicitlyWait(16,TimeUnit.SECONDS);
          
     	// pass(details)
-         test3.pass("Test3 : Modify label name was Successfull");
-  
-         
+         test3.pass("Test3 : Modify label name was Successfull");   
      }
      
      
@@ -193,8 +198,8 @@ public class ExecuteTest {
     	 System.out.println("Delete label");
     	// log with snapshot
          test4.pass("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot2.png").build());
-    	 
      }
+     
      @Test(priority=5)
      public void AssignLabelToEmail () throws Exception {
     	 ExtentTest test5 = extent.createTest(" AssignLabelToEmail ", "this is a test to assign a label to an email and remove it");
@@ -211,7 +216,6 @@ public class ExecuteTest {
     	 Thread.sleep(4000);
     	 mailboxpage.RemoveAssignLabel();
     	 test5.pass("Test5 : Remove a label to an email");
-    	    	 
      }
   
      @AfterTest
@@ -225,7 +229,6 @@ public class ExecuteTest {
 	}   
 	
      
-     @AfterMethod
 	@AfterSuite
      public void tearDown() {
 		// calling flush writes everything to the log file

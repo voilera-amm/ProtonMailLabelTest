@@ -25,6 +25,7 @@ public class LabelPage {
 			System.out.println("enter ClickAddLabelSelection");
 			driver.findElement(IDaddLabel).click();
 		}
+		
 		public void editLabelLigne3 (){
 			driver.findElement(IDeditLigne3).click();
 		}
@@ -35,18 +36,17 @@ public class LabelPage {
 			driver.findElement(IDdeleteLigne3).click();
 			driver.findElement(IDconfirmdelete).click();
 			Thread.sleep(3000);
-		
 		}
+		
 		public void gotoMailbox () throws Exception {
 			driver.findElement (IDMailbox).click();
 			Thread.sleep(3000);
 		}
-		
 				
 		public void logoutProtonMail () throws Exception {
 			driver.findElement(IDselectArrowUser).click();
 			Thread.sleep(3000);
 			driver.findElement(IDLogout).click();
-			
 		}
+		
 }
